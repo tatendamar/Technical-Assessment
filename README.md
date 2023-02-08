@@ -9,9 +9,10 @@ src
   ├── app.js         app entry point
   ├── /controllers   controller layer: business logic
   ├── /routes        controller layer: api routes
-  ├── /middleware    controller layer: api routes
+  ├── /middleware    middleware layer
   ├── /config        config settings
   ├── /models        data access layer: database models
+  ├── /errors        Exception handling
 
 
 ### Installation and execution
@@ -23,6 +24,7 @@ src
 5. install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init`
 6. Create database, run `sequelize db:create to create the database`;
 7. Run `npm start` to start the server.
+
 
 ### API
 
