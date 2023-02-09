@@ -21,7 +21,7 @@ src
 2. Enter the nodejs-express-sequelize folder: `cd server`;
 3. Run npm to install dependencies: `npm install`;
 4. Config database credentials inside `/config/config.json`;
-5. install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init`
+5. install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init` to create table run `sequelize db:migrate`
 6. Create database, run `sequelize db:create to create the database`;
 7. Run `npm start` to start the server.
 
