@@ -1,23 +1,8 @@
-const {
-    StatusCodes
-} = require('http-status-codes');
+const { StatusCodes } = require('http-status-codes');
 const bcrypt = require('bcryptjs');
-
-
-const {
-    sequelize,
-    users
-} = require('../models');
-const {
-    createJwt,
-    destroyToken
-} = require('../utils');
-
-const {
-    BadRequestError,
-    UnauthenticatedError,
-    NotFoundError
-} = require('../errors');
+const { sequelize, users } = require('../models');
+const { createJwt, destroyToken } = require('../utils');
+const { BadRequestError, UnauthenticatedError, NotFoundError } = require('../errors');
 
 
 
@@ -36,11 +21,7 @@ const register = async (req, res) => {
     } = req.body;
 
 
-    const emailAlreadyExists = await users.findOne({
-        where: {
-            email: email
-        }
-    });
+    const emailAlreadyExists = await users.findOne({ where: { email: email }});
 
     if (emailAlreadyExists) {
         throw new BadRequestError('Please provide email and password')
@@ -65,23 +46,13 @@ const register = async (req, res) => {
 
         user.password = await bcrypt.hash(password, salt);
 
-        const {
-            uuid
-        } = await users.create(user);
+        const { uuid } = await users.create(user);
 
-        const tokenUser = {
-            name: user.username,
-            userId: uuid
-        }
+        const tokenUser = { name: user.username, userId: uuid }
 
-        const token = createJwt({
-            payload: tokenUser
-        });
+        const token = createJwt({ payload: tokenUser });
 
-        return res.status(StatusCodes.CREATED).json({
-            user: tokenUser,
-            token
-        });
+        return res.status(StatusCodes.CREATED).json({ user: tokenUser, token });
     }
 }
 
@@ -93,7 +64,6 @@ const login = async (req, res) => {
     } = req.body;
 
     if (!email || !password) {
-        //   throw new BadRequestError('Please provide email and password')
         throw new BadRequestError('Please provide email and password')
     }
 
@@ -113,41 +83,25 @@ const login = async (req, res) => {
         throw new UnauthenticatedError('Invalid Credentials')
     }
 
-    const {
-        uuid
-    } = user;
-    const tokenUser = {
-        name: user.username,
-        userId: uuid
-    }
+    const { uuid } = user;
+    const tokenUser = { name: user.username, userId: uuid }
 
-    const token = createJwt({
-        payload: tokenUser
-    });
+    const token = createJwt({ payload: tokenUser });
 
-    return res.status(StatusCodes.OK).json({
-        user: tokenUser,
-        token
-    });
+    return res.status(StatusCodes.OK).json({ user: tokenUser, token });
 }
 
 
 
 
 const getUsers = async (req, res) => {
-    const {
-        page,
-        size
-    } = req.query;
-    const {
-        limit,
-        offset
-    } = getPagination(page, size);
+    const { page, size } = req.query;
+    const { limit, offset  } = getPagination(page, size);
 
 
 
     const allUsers = await users.findAndCountAll({
-        order: [
+         order: [
             ['createdAt', 'ASC']
         ],
         limit,
@@ -157,10 +111,7 @@ const getUsers = async (req, res) => {
     const response = getPagingData(allUsers, page, limit);
 
 
-    return res.status(StatusCodes.OK).json({
-        status: "200",
-        users: response
-    });
+    return res.status(StatusCodes.OK).json({ status: "200", users: response });
 }
 
 const getUser = async (req, res) => {
