@@ -18,12 +18,13 @@ src
 ### Installation and execution
 
 1. Clone of this repository: `git clone https://github.com/tatendamar/Technical-Assessment.git`;
-2. Enter the nodejs-express-sequelize folder: `cd server`;
+2. Folder name `Technical-Assessment`;
 3. Run npm to install dependencies: `npm install`;
 4. Config database credentials inside `/config/config.json`;
-5. install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init` to create table run `sequelize db:migrate`
+5. Install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init`
 6. Create database, run `sequelize db:create to create the database`;
-7. Run `npm start` to start the server.
+7. To create table run `sequelize db:migrate`
+8. Run `npm start` to start the server.
 
 
 ### API

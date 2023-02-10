@@ -156,7 +156,7 @@ const getUsers = async (req, res) => {
 
     const response = getPagingData(allUsers, page, limit);
 
-    response.currentPage++
+
     return res.status(StatusCodes.OK).json({
         status: "200",
         users: response
