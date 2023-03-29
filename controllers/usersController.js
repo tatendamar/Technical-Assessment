@@ -108,10 +108,14 @@ const getUsers = async (req, res) => {
         offset
     });
 
+
     const response = getPagingData(allUsers, page, limit);
 
 
-    return res.status(StatusCodes.OK).json({ status: "200", users: response });
+    return res.status(StatusCodes.OK).json({ 
+        status: "200",
+        users: response
+        });
 }
 
 const getUser = async (req, res) => {
@@ -196,7 +200,7 @@ const deleteUser = async (req, res) => {
 }
 
 const getPagination = (page, size) => {
-    const limit = size ? +size : 3;
+    const limit = size ? +size : 10;
     const offset = page ? page * limit : 0;
 
     return {
