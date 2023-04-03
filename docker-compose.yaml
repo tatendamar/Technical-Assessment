@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  server:
+    container_name: tech-assessment-server
+    image: tech-assessment-server:1.0.4
+    build:
+      context: .
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db
+    depends_on:
+      - db
+  db:
+    container_name: tech-assessment-db
+    image: "postgres"
+    environment:
+      - POSTGRES_USER=tatenda
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=tatenda
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  data: 
