@@ -17,14 +17,13 @@ src
 
 ### Installation and execution
 
-1. Clone of this repository: `git clone https://github.com/tatendamar/Technical-Assessment.git`;
-2. Folder name `Technical-Assessment`;
-3. Run npm to install dependencies: `npm install`;
-4. Config database credentials inside `/config/config.json`;
-5. Install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init`
-6. Create database, run `sequelize db:create to create the database`;
-7. To create table run `sequelize db:migrate`
-8. Run `npm start` to start the server.
+1. Folder name `Technical-Assessment`;
+2. Run npm to install dependencies: `npm install`;
+3. Config database credentials inside `/config/config.json`;
+4. Install sequelize globally  `npm install -g sequelize-cli` and run `sequelize init`
+5. Create database, run `sequelize db:create to create the database`;
+6. To create table run `sequelize db:migrate`
+7. Run `npm start` to start the server.
 
 
 ### API
